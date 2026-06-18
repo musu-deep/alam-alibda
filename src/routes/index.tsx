@@ -124,10 +124,16 @@ function HeroGlobe() {
   .arcDashGap(1.2)
   .arcDashAnimateTime(4500);
 
-      globeInstance.controls().autoRotate = true;
-      globeInstance.controls().autoRotateSpeed = 0.35;
-      globeInstance.controls().enableZoom = false;
-      globeInstance.controls().enablePan = false;
+      const controls = globeInstance.controls();
+
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.25;
+controls.enableZoom = false;
+controls.enablePan = false;
+controls.enableRotate = true;
+controls.rotateSpeed = 0.55;
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
 
       globeInstance.pointOfView({ lat: 24, lng: 72, altitude: 1.9 }, 0);
     }
@@ -141,7 +147,7 @@ function HeroGlobe() {
   }, []);
 
   return (
-    <div className="absolute left-0 top-16 bottom-0 w-[52%] z-20 pointer-events-none">
+    <div className="absolute left-0 top-16 bottom-0 w-[52%] z-20 pointer-events-auto">
       <div className="relative h-full flex items-center justify-center">
         <div className="hero-real-globe">
           <div ref={globeRef} />

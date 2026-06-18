@@ -263,3 +263,14 @@
 .hero-real-globe canvas {
   border-radius: 999px;
 }
+
+.hero-real-globe,
+.hero-real-globe canvas {
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.hero-real-globe:active,
+.hero-real-globe canvas:active {
+  cursor: grabbing;
+}
