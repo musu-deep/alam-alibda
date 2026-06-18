@@ -46,13 +46,13 @@ const values = [
 ];
 
 const globeCities = [
-  { name: "شنغهاي", country: "الصين", lat: 31.2304, lng: 121.4737 },
-  { name: "غوانزو", country: "الصين", lat: 23.1291, lng: 113.2644 },
-  { name: "جدة", country: "السعودية", lat: 21.4858, lng: 39.1925 },
-  { name: "الرياض", country: "السعودية", lat: 24.7136, lng: 46.6753 },
-  { name: "مسقط", country: "عُمان", lat: 23.588, lng: 58.3829 },
-  { name: "الخرطوم", country: "السودان", lat: 15.5007, lng: 32.5599 },
-  { name: "نيروبي", country: "كينيا", lat: -1.2921, lng: 36.8219 },
+  { name: "شنغهاي", country: "الصين", lat: 31.2304, lng: 121.4737, note: "مركز التوريد والتصدير ومتابعة المصانع." },
+  { name: "غوانزو", country: "الصين", lat: 23.1291, lng: 113.2644, note: "بحث الموردين، فحص الجودة، وتجميع الشحنات." },
+  { name: "جدة", country: "السعودية", lat: 21.4858, lng: 39.1925, note: "استقبال الشحنات وخدمة العملاء في السوق السعودي." },
+  { name: "الرياض", country: "السعودية", lat: 24.7136, lng: 46.6753, note: "مشاريع تجهيز وتوريد وحلول أعمال." },
+  { name: "مسقط", country: "عُمان", lat: 23.588, lng: 58.3829, note: "مكتب إقليمي وخدمات تنسيق لوجستي." },
+  { name: "الخرطوم", country: "السودان", lat: 15.5007, lng: 32.5599, note: "فرع رئيسي وخدمات تجارية وتشغيلية." },
+  { name: "نيروبي", country: "كينيا", lat: -1.2921, lng: 36.8219, note: "شحنات منفذة وفرص توسع في شرق أفريقيا." },
 ];
 
 const globeRoutes = [
@@ -62,6 +62,15 @@ const globeRoutes = [
   { startLat: 31.2304, startLng: 121.4737, endLat: 15.5007, endLng: 32.5599 },
   { startLat: 23.1291, startLng: 113.2644, endLat: -1.2921, endLng: 36.8219 },
 ];
+
+.labelsData(globeCities)
+.labelLat((d: any) => d.lat)
+.labelLng((d: any) => d.lng)
+.labelText((d: any) => d.name)
+.labelSize(1.2)
+.labelDotRadius(0.32)
+.labelColor(() => "rgba(231,183,74,0.95)")
+.labelResolution(2)
 
 function HeroGlobe() {
   const globeRef = useRef<HTMLDivElement | null>(null);
@@ -90,6 +99,30 @@ function HeroGlobe() {
         .pointAltitude(0.035)
         .pointRadius(0.35)
         .pointColor(() => "#e7b74a")
+        .pointLabel((d: any) => `
+  <div style="
+    direction:rtl;
+    text-align:right;
+    min-width:180px;
+    background:rgba(4,10,24,.92);
+    border:1px solid rgba(231,183,74,.55);
+    border-radius:14px;
+    padding:12px 14px;
+    color:white;
+    font-family:Cairo,Tajawal,sans-serif;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+  ">
+    <div style="font-size:15px;font-weight:800;color:#e7b74a;margin-bottom:4px;">
+      ${d.name}
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:8px;">
+      ${d.country}
+    </div>
+    <div style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.9);">
+      ${d.note}
+    </div>
+  </div>
+`)
         .arcsData(globeRoutes)
         .arcStartLat((d: any) => d.startLat)
         .arcStartLng((d: any) => d.startLng)
