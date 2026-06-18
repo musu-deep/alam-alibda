@@ -193,7 +193,7 @@ function Index() {
 
       <div className="hidden md:flex flex-col leading-tight">
         <span className="font-black text-lg text-white">
-          عالم الإبداع
+          الاستيراد والتصدير | التجارة الدولية
         </span>
 
         <span className="text-[10px] tracking-[3px] text-[#D4A84F] uppercase">
