@@ -46,13 +46,15 @@ const values = [
 ];
 
 const globeCities = [
-  { name: "شنغهاي", country: "الصين", lat: 31.2304, lng: 121.4737, note: "مركز التوريد والتصدير ومتابعة المصانع." },
-  { name: "غوانزو", country: "الصين", lat: 23.1291, lng: 113.2644, note: "بحث الموردين، فحص الجودة، وتجميع الشحنات." },
-  { name: "جدة", country: "السعودية", lat: 21.4858, lng: 39.1925, note: "استقبال الشحنات وخدمة العملاء في السوق السعودي." },
-  { name: "الرياض", country: "السعودية", lat: 24.7136, lng: 46.6753, note: "مشاريع تجهيز وتوريد وحلول أعمال." },
-  { name: "مسقط", country: "عُمان", lat: 23.588, lng: 58.3829, note: "مكتب إقليمي وخدمات تنسيق لوجستي." },
-  { name: "الخرطوم", country: "السودان", lat: 15.5007, lng: 32.5599, note: "فرع رئيسي وخدمات تجارية وتشغيلية." },
-  { name: "نيروبي", country: "كينيا", lat: -1.2921, lng: 36.8219, note: "شحنات منفذة وفرص توسع في شرق أفريقيا." },
+  { label: "Shanghai", name: "شنغهاي", country: "الصين", lat: 31.2304, lng: 121.4737, note: "مركز التوريد والتصدير ومتابعة المصانع." },
+  { label: "Guangzhou", name: "غوانزو", country: "الصين", lat: 23.1291, lng: 113.2644, note: "بحث الموردين، فحص الجودة، وتجميع الشحنات." },
+  { label: "Jeddah", name: "جدة", country: "السعودية", lat: 21.4858, lng: 39.1925, note: "استقبال الشحنات وخدمة العملاء في السوق السعودي." },
+  { label: "Riyadh", name: "الرياض", country: "السعودية", lat: 24.7136, lng: 46.6753, note: "مشاريع تجهيز وتوريد وحلول أعمال." },
+  { label: "Muscat", name: "مسقط", country: "عُمان", lat: 23.588, lng: 58.3829, note: "مكتب إقليمي وخدمات تنسيق لوجستي." },
+  { label: "Khartoum", name: "الخرطوم", country: "السودان", lat: 15.5007, lng: 32.5599, note: "فرع رئيسي وخدمات تجارية وتشغيلية." },
+  { label: "Nairobi", name: "نيروبي", country: "كينيا", lat: -1.2921, lng: 36.8219, note: "شحنات منفذة وفرص توسع في شرق أفريقيا." },
+  { label: "Tunis", name: "تونس", country: "تونس", lat: 36.8065, lng: 10.1815, note: "فرص تعاون وتوريد للأسواق المغاربية." },
+  { label: "Lagos", name: "لاغوس", country: "نيجيريا", lat: 6.5244, lng: 3.3792, note: "بوابة غرب أفريقيا للشحن والتجارة." },
 ];
 
 const globeRoutes = [
@@ -61,6 +63,8 @@ const globeRoutes = [
   { startLat: 23.1291, startLng: 113.2644, endLat: 23.588, endLng: 58.3829 },
   { startLat: 31.2304, startLng: 121.4737, endLat: 15.5007, endLng: 32.5599 },
   { startLat: 23.1291, startLng: 113.2644, endLat: -1.2921, endLng: 36.8219 },
+  { startLat: 23.1291, startLng: 113.2644, endLat: 36.8065, endLng: 10.1815 },
+  { startLat: 23.1291, startLng: 113.2644, endLat: 6.5244, endLng: 3.3792 },
 ];
 
 
@@ -103,7 +107,7 @@ function HeroGlobe() {
   .labelsData(globeCities)
   .labelLat((d: any) => d.lat)
   .labelLng((d: any) => d.lng)
-  .labelText((d: any) => d.name)
+  .labelText((d: any) => d.label)
   .labelSize(() => 1.2)
   .labelDotRadius(() => 0.3)
   .labelColor(() => "#e7b74a")
