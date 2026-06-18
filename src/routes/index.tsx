@@ -55,8 +55,8 @@ const globePoints = [
 
 function HeroGlobe() {
   return (
-    <div className="absolute left-0 top-16 bottom-0 w-[52%] z-20 pointer-events-none"></div>
-        <div className="relative h-full flex items-center justify-center">
+    <div className="absolute left-0 top-16 bottom-0 w-[52%] z-20 pointer-events-none">
+      <div className="relative h-full flex items-center justify-center">
         <div className="globe-wrap">
           <div className="globe-core">
             <div className="globe-grid" />
