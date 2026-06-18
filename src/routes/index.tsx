@@ -45,6 +45,59 @@ const values = [
   { icon: "🤝", t: "شراكة طويلة الأمد" },
 ];
 
+const globePoints = [
+  { name: "الصين", sub: "مصدر الشحن", top: "38%", right: "18%" },
+  { name: "السعودية", sub: "عملاء رئيسيون", top: "52%", right: "48%" },
+  { name: "عُمان", sub: "مكتب إقليمي", top: "61%", right: "42%" },
+  { name: "السودان", sub: "فرع رئيسي", top: "67%", right: "55%" },
+  { name: "كينيا", sub: "شحنات منفذة", top: "75%", right: "58%" },
+];
+
+function HeroGlobe() {
+  return (
+    <div className="hidden lg:block absolute left-0 top-24 bottom-0 w-[50%] pointer-events-none">
+      <div className="relative h-full flex items-center justify-center">
+        <div className="globe-wrap">
+          <div className="globe-core">
+            <div className="globe-grid" />
+            <div className="globe-glow" />
+
+            {globePoints.map((p) => (
+              <div
+                key={p.name}
+                className="globe-pin"
+                style={{ top: p.top, right: p.right }}
+              >
+                <span className="pin-dot" />
+                <div className="pin-card">
+                  <strong>{p.name}</strong>
+                  <small>{p.sub}</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute bottom-16 left-24 right-20 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md p-5">
+          <p className="text-center text-sm text-white/80 mb-4">ننتشر لنخدمك</p>
+          <div className="grid grid-cols-4 gap-4 text-center">
+            {[
+              ["20+", "دولة"],
+              ["100+", "مدينة شحن"],
+              ["500+", "عميل"],
+              ["10K+", "شحنة"],
+            ].map(([n, t]) => (
+              <div key={t}>
+                <div className="text-2xl font-black text-gold">{n}</div>
+                <div className="text-xs text-white/60">{t}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Index() {
   const [step, setStep] = useState(0);
@@ -73,6 +126,7 @@ function Index() {
 
       {/* HERO */}
       <section id="home" className="relative min-h-screen flex items-center pt-16">
+        <HeroGlobe />
         <div className="absolute inset-0 overflow-hidden">
           <img src={heroImg} alt="عالم الإبداع - الاستيراد من الصين إلى الخليج" width={1920} height={1080} className="w-full h-full object-cover animate-ken-burns" />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />

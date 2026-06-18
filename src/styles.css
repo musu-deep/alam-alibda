@@ -135,3 +135,108 @@
 .animate-fade-up { animation: fade-up 0.9s cubic-bezier(.2,.7,.2,1) both; }
 .animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
 .animate-ken-burns { animation: ken-burns 20s ease-out both alternate infinite; }
+
+.globe-wrap {
+  width: min(620px, 44vw);
+  aspect-ratio: 1;
+  position: relative;
+  filter: drop-shadow(0 0 45px rgba(218, 166, 73, 0.22));
+}
+
+.globe-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(103, 178, 255, 0.55), transparent 18%),
+    radial-gradient(circle at 65% 55%, rgba(218, 166, 73, 0.32), transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(5, 22, 46, 0.8), rgba(1, 8, 20, 0.98) 70%);
+  border: 1px solid rgba(132, 190, 255, 0.28);
+  box-shadow:
+    inset -35px -25px 90px rgba(0, 0, 0, 0.72),
+    inset 20px 15px 50px rgba(78, 169, 255, 0.18),
+    0 0 90px rgba(48, 132, 255, 0.16);
+  animation: globeFloat 7s ease-in-out infinite;
+}
+
+.globe-grid {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(rgba(218, 166, 73, 0.17) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(218, 166, 73, 0.17) 1px, transparent 1px);
+  background-size: 42px 42px;
+  border-radius: 999px;
+  transform: rotate(-12deg);
+  animation: globeRotate 45s linear infinite;
+  opacity: 0.55;
+}
+
+.globe-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 15%),
+    radial-gradient(circle at 70% 70%, rgba(218,166,73,0.22), transparent 20%);
+}
+
+.globe-pin {
+  position: absolute;
+  transform: translate(50%, -50%);
+  z-index: 5;
+}
+
+.pin-dot {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: #e5b34e;
+  box-shadow: 0 0 0 8px rgba(229, 179, 78, 0.12), 0 0 22px rgba(229, 179, 78, 0.9);
+  animation: pinPulse 2.4s ease-in-out infinite;
+}
+
+.pin-card {
+  position: absolute;
+  right: 18px;
+  top: -16px;
+  min-width: 105px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(5, 10, 22, 0.76);
+  border: 1px solid rgba(229, 179, 78, 0.35);
+  backdrop-filter: blur(8px);
+  color: white;
+  text-align: right;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.pin-card strong {
+  display: block;
+  font-size: 13px;
+  color: #f3c45f;
+}
+
+.pin-card small {
+  display: block;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+
+@keyframes globeRotate {
+  from { transform: translateX(0) rotate(-12deg); }
+  to { transform: translateX(84px) rotate(-12deg); }
+}
+
+@keyframes globeFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes pinPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
