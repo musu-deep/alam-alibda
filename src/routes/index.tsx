@@ -55,8 +55,8 @@ const globePoints = [
 
 function HeroGlobe() {
   return (
-    <div className="hidden lg:block absolute left-0 top-24 bottom-0 w-[50%] pointer-events-none">
-      <div className="relative h-full flex items-center justify-center">
+    <div className="absolute left-0 top-16 bottom-0 w-[52%] z-20 pointer-events-none"></div>
+        <div className="relative h-full flex items-center justify-center">
         <div className="globe-wrap">
           <div className="globe-core">
             <div className="globe-grid" />
@@ -126,14 +126,15 @@ function Index() {
 
       {/* HERO */}
       <section id="home" className="relative min-h-screen flex items-center pt-16">
-        <HeroGlobe />
+        
         <div className="absolute inset-0 overflow-hidden">
           <img src={heroImg} alt="عالم الإبداع - الاستيراد من الصين إلى الخليج" width={1920} height={1080} className="w-full h-full object-cover animate-ken-burns" />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
           <div className="absolute inset-0 bg-background/40" />
         </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
+        <HeroGlobe />
+        {/* HERO CONTENT */}
+        <div className="relative z-30 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gold mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
