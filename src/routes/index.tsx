@@ -63,14 +63,6 @@ const globeRoutes = [
   { startLat: 23.1291, startLng: 113.2644, endLat: -1.2921, endLng: 36.8219 },
 ];
 
-.labelsData(globeCities)
-.labelLat((d: any) => d.lat)
-.labelLng((d: any) => d.lng)
-.labelText((d: any) => d.name)
-.labelSize(1.2)
-.labelDotRadius(0.32)
-.labelColor(() => "rgba(231,183,74,0.95)")
-.labelResolution(2)
 
 function HeroGlobe() {
   const globeRef = useRef<HTMLDivElement | null>(null);
@@ -87,53 +79,46 @@ function HeroGlobe() {
 
       const Globe = GlobeModule.default;
 
-      globeInstance = new Globe(globeRef.current)
-        .width(620)
-        .height(620)
-        .backgroundColor("rgba(0,0,0,0)")
-        .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
-        .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
-        .pointsData(globeCities)
-        .pointLat((d: any) => d.lat)
-        .pointLng((d: any) => d.lng)
-        .pointAltitude(0.035)
-        .pointRadius(0.35)
-        .pointColor(() => "#e7b74a")
-        .pointLabel((d: any) => `
-  <div style="
-    direction:rtl;
-    text-align:right;
-    min-width:180px;
-    background:rgba(4,10,24,.92);
-    border:1px solid rgba(231,183,74,.55);
-    border-radius:14px;
-    padding:12px 14px;
-    color:white;
-    font-family:Cairo,Tajawal,sans-serif;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-  ">
-    <div style="font-size:15px;font-weight:800;color:#e7b74a;margin-bottom:4px;">
-      ${d.name}
+ globeInstance = new Globe(globeRef.current)
+  .width(620)
+  .height(620)
+  .backgroundColor("rgba(0,0,0,0)")
+  .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
+  .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+
+  .pointsData(globeCities)
+  .pointLat((d: any) => d.lat)
+  .pointLng((d: any) => d.lng)
+  .pointAltitude(0.035)
+  .pointRadius(0.35)
+  .pointColor(() => "#e7b74a")
+  .pointLabel((d: any) => `
+    <div style="direction:rtl;text-align:right;min-width:190px;background:rgba(4,10,24,.94);border:1px solid rgba(231,183,74,.55);border-radius:14px;padding:12px 14px;color:white;font-family:Cairo,Tajawal,sans-serif;box-shadow:0 20px 50px rgba(0,0,0,.35);">
+      <div style="font-size:15px;font-weight:800;color:#e7b74a;margin-bottom:4px;">${d.name}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:8px;">${d.country}</div>
+      <div style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.9);">${d.note || ""}</div>
     </div>
-    <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:8px;">
-      ${d.country}
-    </div>
-    <div style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.9);">
-      ${d.note}
-    </div>
-  </div>
-`)
-        .arcsData(globeRoutes)
-        .arcStartLat((d: any) => d.startLat)
-        .arcStartLng((d: any) => d.startLng)
-        .arcEndLat((d: any) => d.endLat)
-        .arcEndLng((d: any) => d.endLng)
-        .arcColor(() => ["rgba(231,183,74,0.15)", "rgba(231,183,74,0.95)"])
-        .arcAltitude(0.22)
-        .arcStroke(0.85)
-        .arcDashLength(0.5)
-        .arcDashGap(1.2)
-        .arcDashAnimateTime(4500);
+  `)
+
+  .labelsData(globeCities)
+  .labelLat((d: any) => d.lat)
+  .labelLng((d: any) => d.lng)
+  .labelText((d: any) => d.name)
+  .labelSize(() => 1.2)
+  .labelDotRadius(() => 0.3)
+  .labelColor(() => "#e7b74a")
+
+  .arcsData(globeRoutes)
+  .arcStartLat((d: any) => d.startLat)
+  .arcStartLng((d: any) => d.startLng)
+  .arcEndLat((d: any) => d.endLat)
+  .arcEndLng((d: any) => d.endLng)
+  .arcColor(() => ["rgba(231,183,74,0.15)", "rgba(231,183,74,0.95)"])
+  .arcAltitude(0.22)
+  .arcStroke(0.85)
+  .arcDashLength(0.5)
+  .arcDashGap(1.2)
+  .arcDashAnimateTime(4500);
 
       globeInstance.controls().autoRotate = true;
       globeInstance.controls().autoRotateSpeed = 0.35;
