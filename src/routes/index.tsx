@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero.jpg";
 import portImg from "@/assets/port.jpg";
 import solarImg from "@/assets/solar.jpg";
 import hotelImg from "@/assets/hotel.jpg";
 import qualityImg from "@/assets/quality.jpg";
+import { useEffect, useRef } from "react";
+import Globe from "globe.gl";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -132,7 +134,86 @@ function Index() {
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
           <div className="absolute inset-0 bg-background/40" />
         </div>
-        <HeroGlobe />
+        
+
+const globeCities = [
+  { name: "شنغهاي", country: "الصين", lat: 31.2304, lng: 121.4737 },
+  { name: "غوانزو", country: "الصين", lat: 23.1291, lng: 113.2644 },
+  { name: "جدة", country: "السعودية", lat: 21.4858, lng: 39.1925 },
+  { name: "الرياض", country: "السعودية", lat: 24.7136, lng: 46.6753 },
+  { name: "مسقط", country: "عُمان", lat: 23.588, lng: 58.3829 },
+  { name: "الخرطوم", country: "السودان", lat: 15.5007, lng: 32.5599 },
+  { name: "نيروبي", country: "كينيا", lat: -1.2921, lng: 36.8219 },
+];
+
+const globeRoutes = [
+  { startLat: 31.2304, startLng: 121.4737, endLat: 21.4858, endLng: 39.1925 },
+  { startLat: 23.1291, startLng: 113.2644, endLat: 24.7136, endLng: 46.6753 },
+  { startLat: 23.1291, startLng: 113.2644, endLat: 23.588, endLng: 58.3829 },
+  { startLat: 31.2304, startLng: 121.4737, endLat: 15.5007, endLng: 32.5599 },
+  { startLat: 23.1291, startLng: 113.2644, endLat: -1.2921, endLng: 36.8219 },
+];
+
+function HeroGlobe() {
+  const globeRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!globeRef.current) return;
+
+    const globe = new Globe(globeRef.current)
+      .width(620)
+      .height(620)
+      .backgroundColor("rgba(0,0,0,0)")
+      .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
+      .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+      .pointsData(globeCities)
+      .pointLat((d: any) => d.lat)
+      .pointLng((d: any) => d.lng)
+      .pointAltitude(0.035)
+      .pointRadius(0.38)
+      .pointColor(() => "#e7b74a")
+      .pointLabel((d: any) => `
+        <div style="direction:rtl;text-align:right;background:rgba(5,10,22,.86);border:1px solid rgba(231,183,74,.45);padding:8px 10px;border-radius:10px;color:white;font-family:Cairo,Tajawal,sans-serif">
+          <b style="color:#e7b74a">${d.name}</b><br/>
+          <span style="font-size:11px;color:rgba(255,255,255,.7)">${d.country}</span>
+        </div>
+      `)
+      .arcsData(globeRoutes)
+      .arcStartLat((d: any) => d.startLat)
+      .arcStartLng((d: any) => d.startLng)
+      .arcEndLat((d: any) => d.endLat)
+      .arcEndLng((d: any) => d.endLng)
+      .arcColor(() => ["rgba(231,183,74,0.15)", "rgba(231,183,74,0.95)"])
+      .arcAltitude(0.22)
+      .arcStroke(0.75)
+      .arcDashLength(0.55)
+      .arcDashGap(1.2)
+      .arcDashAnimateTime(4200);
+
+    globe.controls().autoRotate = true;
+    globe.controls().autoRotateSpeed = 0.35;
+    globe.controls().enableZoom = false;
+    globe.controls().enablePan = false;
+
+    globe.pointOfView({ lat: 23, lng: 70, altitude: 1.9 }, 0);
+
+    return () => {
+      if (globeRef.current) globeRef.current.innerHTML = "";
+    };
+  }, []);
+
+  return (
+    <div className="absolute left-0 top-16 bottom-0 w-[52%] z-20 pointer-events-none">
+      <div className="relative h-full flex items-center justify-center">
+        <div className="hero-real-globe">
+          <div ref={globeRef} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
         {/* HERO CONTENT */}
         <div className="relative z-30 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">

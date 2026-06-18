@@ -240,3 +240,26 @@
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.25); opacity: 0.75; }
 }
+
+.hero-real-globe {
+  width: 620px;
+  height: 620px;
+  position: relative;
+  filter:
+    drop-shadow(0 0 50px rgba(42, 127, 255, 0.22))
+    drop-shadow(0 0 34px rgba(231, 183, 74, 0.16));
+}
+
+.hero-real-globe::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, rgba(83, 164, 255, 0.26), transparent 35%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-real-globe canvas {
+  border-radius: 999px;
+}
