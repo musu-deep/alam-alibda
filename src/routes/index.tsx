@@ -5,6 +5,7 @@ import portImg from "@/assets/port.jpg";
 import solarImg from "@/assets/solar.jpg";
 import hotelImg from "@/assets/hotel.jpg";
 import qualityImg from "@/assets/quality.jpg";
+import logo from "@/assets/logo-creative-world.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -179,24 +180,44 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/60 border-b border-white/5">
-        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#home" className="flex items-center gap-3">
-            <span className="w-9 h-9 rounded-md grid place-items-center font-black text-primary-foreground" style={{ background: "var(--gradient-gold)" }}>ع</span>
-            <span className="font-extrabold tracking-tight">عالم الإبداع</span>
-          </a>
-          <ul className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <li><a href="#services" className="hover:text-gold transition">خدماتنا</a></li>
-            <li><a href="#map" className="hover:text-gold transition">فروعنا</a></li>
-            <li><a href="#about" className="hover:text-gold transition">من نحن</a></li>
-            <li><a href="#contact" className="hover:text-gold transition">تواصل</a></li>
-          </ul>
-          <a href="#quote" className="inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-md text-primary-foreground shadow-gold" style={{ background: "var(--gradient-gold)" }}>
-            طلب عرض سعر
-          </a>
-        </nav>
-      </header>
+ {/* NAV */}
+<header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#061426]/85 border-b border-[#D4A84F]/15">
+  <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+    <a href="#home" className="flex items-center gap-4">
+      <img
+        src={logo}
+        alt="عالم الإبداع"
+        className="header-logo"
+      />
+
+      <div className="hidden md:flex flex-col leading-tight">
+        <span className="font-black text-lg text-white">
+          عالم الإبداع
+        </span>
+
+        <span className="text-[10px] tracking-[3px] text-[#D4A84F] uppercase">
+          CREATIVE WORLD
+        </span>
+      </div>
+    </a>
+
+    <ul className="hidden md:flex items-center gap-8 text-sm text-white/80">
+      <li><a href="#services" className="hover:text-[#D4A84F] transition">خدماتنا</a></li>
+      <li><a href="#map" className="hover:text-[#D4A84F] transition">فروعنا</a></li>
+      <li><a href="#about" className="hover:text-[#D4A84F] transition">من نحن</a></li>
+      <li><a href="#contact" className="hover:text-[#D4A84F] transition">تواصل</a></li>
+    </ul>
+
+    <a
+      href="#quote"
+      className="px-5 py-2 rounded-lg font-bold text-black bg-[#D4A84F] hover:scale-105 transition"
+    >
+      طلب عرض سعر
+    </a>
+
+  </nav>
+</header>
 
       {/* HERO */}
       <section id="home" className="relative min-h-screen flex items-center pt-16">

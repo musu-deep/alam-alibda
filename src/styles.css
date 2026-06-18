@@ -274,3 +274,39 @@
 .hero-real-globe canvas:active {
   cursor: grabbing;
 }
+
+.header-logo{
+  height:58px;
+  width:auto;
+  object-fit:contain;
+
+  filter:
+    drop-shadow(0 0 12px rgba(212,168,79,.25))
+    drop-shadow(0 0 30px rgba(255,255,255,.08));
+
+  transition:all .35s ease;
+}
+
+.header-logo:hover{
+  transform:scale(1.04);
+}
+
+@media (max-width:768px){
+  .header-logo{
+    height:48px;
+  }
+}
+
+.header-logo{
+  height:58px;
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-3px);
+  }
+}
