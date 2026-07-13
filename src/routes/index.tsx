@@ -510,14 +510,14 @@ function Index() {
               <span className="font-extrabold text-lg">عالم الإبداع</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              للاستيراد والتصدير، الطاقة المتجددة، وتجهيز المشاريع الكبرى. نختصر المسافات لنضع الصين بين يديك.
+              للاستيراد والتصدير، الطاقة المتجددة، وتجهيز المشاريع الكبرى. نختصر المسافات لنضع الصين والعالم بين يديك.
             </p>
           </div>
           <div>
             <h4 className="font-bold mb-4">للتواصل المباشر</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex justify-between gap-3"><span className="text-muted-foreground">الصين — واتساب</span><a dir="ltr" href="https://wa.me/8613600495904" className="text-gold font-mono">+86 136 0049 5904</a></li>
-              <li className="flex justify-between gap-3"><span className="text-muted-foreground">الصين — واتساب</span><a dir="ltr" href="https://wa.me/8618000872025" className="text-gold font-mono">+86 180 0087 2025</a></li>
+              <li className="flex justify-between gap-3"><span className="text-muted-foreground">الصين — واتساب</span><a dir="ltr" href="https://wa.me/8613600495904" className="text-gold font-mono">+86 13600495904</a></li>
+              <li className="flex justify-between gap-3"><span className="text-muted-foreground">السعودية — واتساب</span><a dir="ltr" href="https://wa.me/966537971388" className="text-gold font-mono">+966 537971388</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">السودان</span><a dir="ltr" href="tel:+249926122303" className="text-gold font-mono">+249 926122303</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">عُمان</span><a dir="ltr" href="tel:+96871130149" className="text-gold font-mono">+968 71130149</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">البريد</span><a dir="ltr" href="mailto:info@ibdaaworld.com" className="text-gold font-mono text-xs">info@ibdaaworld.com</a></li>
