@@ -34,7 +34,7 @@ const services = [
 
 const branches = [
   { city: "الصين", role: "مركز الإمداد الرئيسي", phone: "+86 13600495904", tag: "واتساب" },
-  { city: "الصين", role: "خط مباشر", phone: "+86 18000872025", tag: "واتساب" },
+  { city: "السعودية", role: "خط مباشر", phone: "+966537971388", tag: "واتساب" },
   { city: "السودان", role: "فرع رئيسي", phone: "+249 926122303", tag: "مكتب" },
   { city: "سلطنة عُمان", role: "مكتب إقليمي", phone: "+968 71130149", tag: "مكتب" },
 ];
@@ -330,7 +330,7 @@ function Index() {
           <div className="max-w-2xl mb-16">
             <p className="text-gold text-sm font-bold mb-3">شبكتنا الدولية</p>
             <h2 className="text-4xl md:text-5xl font-black">خريطة <span className="gradient-gold-text">أعمالنا</span></h2>
-            <p className="mt-4 text-muted-foreground text-lg">من الصين كمركز إمداد، إلى السودان وعُمان، وقريباً السعودية.</p>
+            <p className="mt-4 text-muted-foreground text-lg">من الصين كمركز إمداد، إلى السعودية وعُمان، وقريباً بقية دول الخليج وشمال أفريقيا.</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -363,7 +363,7 @@ function Index() {
                 {/* nodes */}
                 {[
                   { x: 320, y: 100, l: "الصين" },
-                  { x: 120, y: 130, l: "السودان" },
+                  { x: 120, y: 130, l: "شمال أفريقيا" },
                   { x: 200, y: 180, l: "عُمان" },
                   { x: 250, y: 220, l: "السعودية" },
                 ].map((n) => (
@@ -520,8 +520,8 @@ function Index() {
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">الصين — واتساب</span><a dir="ltr" href="https://wa.me/8618000872025" className="text-gold font-mono">+86 180 0087 2025</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">السودان</span><a dir="ltr" href="tel:+249926122303" className="text-gold font-mono">+249 926122303</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">عُمان</span><a dir="ltr" href="tel:+96871130149" className="text-gold font-mono">+968 71130149</a></li>
-              <li className="flex justify-between gap-3"><span className="text-muted-foreground">البريد</span><a dir="ltr" href="mailto:amu2026n@gmail.com" className="text-gold font-mono text-xs">amu2026n@gmail.com</a></li>
-              <li className="flex justify-between gap-3"><span className="text-muted-foreground">QQ Mail</span><a dir="ltr" href="mailto:2261579826@qq.com" className="text-gold font-mono text-xs">2261579826@qq.com</a></li>
+              <li className="flex justify-between gap-3"><span className="text-muted-foreground">البريد</span><a dir="ltr" href="mailto:info@ibdaaworld.com" className="text-gold font-mono text-xs">info@ibdaaworld.com</a></li>
+              <li className="flex justify-between gap-3"><span className="text-muted-foreground">QQ Mail</span><a dir="ltr" href="mailto:ibdaaworld@gmail.com" className="text-gold font-mono text-xs">ibdaaworld@gmail.com</a></li>
             </ul>
           </div>
           <div>
