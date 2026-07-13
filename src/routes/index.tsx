@@ -11,8 +11,8 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "عالم الإبداع | بوابة التوريد من الصين وجميع دول العالم" },
-      { name: "description", content: "خبرة 20 عاماً في الاستيراد من الصين، حلول الطاقة الشمسية، تجهيز الفنادق والمنازل، والشحن الدولي. فروعنا: الصين، السودان، عُمان، وقريباً السعودية." },
-      { property: "og:title", content: "عالم الإبداع | بوابتك الآمنة من الصين إلى الخليج" },
+      { name: "description", content: "خبرة 20 عاماً في الاستيراد من الصين، حلول الطاقة الشمسية، تجهيز الفنادق والمنازل، والشحن الدولي. فروعنا: الصين، السودان، عُمان، السعودية." },
+      { property: "og:title", content: "عالم الإبداع | بوابتك الموثوقة من الصين إلى السعودية والخليج وشمال أفريقيا" },
       { property: "og:description", content: "نختصر المسافات.. لنضع الصين بين يديك. 20 عاماً من الثقة." },
       { property: "og:image", content: heroImg },
     ],
@@ -408,7 +408,7 @@ function Index() {
           </div>
           <div>
             <p className="text-gold text-sm font-bold mb-3">من نحن</p>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">بوابتك <span className="gradient-gold-text">الآمنة</span> في الصين.</h2>
+            <h2 className="text-4xl md:text-5xl font-black leading-tight">بوابتك <span className="gradient-gold-text">الموثوقة</span> في الصين.</h2>
             <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
               في <strong className="text-white">عالم الإبداع</strong> نختصر لك رحلة الاستيراد بأكملها — من اختيار المصنع، إلى فحص الجودة، إلى الشحن الدولي والتخليص الجمركي. لا داعي للسفر، ولا للقلق. نحن هناك من أجلك.
             </p>
