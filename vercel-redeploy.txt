@@ -1,0 +1,2 @@
+Redeploy trigger: service icons updated to Lucide institutional icons.
+Timestamp: 2026-07-17
