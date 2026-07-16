@@ -1,5 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import {
+  BarChart3,
+  Building2,
+  FileCheck2,
+  Globe2,
+  Network,
+  Plane,
+  ShieldCheck,
+  Ship,
+  SunMedium,
+} from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import portImg from "@/assets/port.jpg";
 import solarImg from "@/assets/solar.jpg";
@@ -21,15 +32,15 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { icon: "🚢", title: "الاستيراد من الصين للعالم", desc: "جميع المنتجات بجودة مضمونة وأسعار مباشرة من المصنع." },
-  { icon: "🌍", title: "التصدير إلى الأسواق العالمية", desc: "نوصل منتجاتك من الصين إلى أي وجهة حول العالم." },
-  { icon: "✈️", title: "الشحن البحري والجوي", desc: "حاويات كاملة وجزئية (FCL / LCL) وشحن جوي سريع." },
-  { icon: "📋", title: "التخليص الجمركي", desc: "استخراج كافة الشهادات والوثائق وإنهاء الإجراءات الجمركية." },
-  { icon: "🛡️", title: "فحص الجودة من الموردين", desc: "فريقنا في الصين يتأكد من جودة بضاعتك قبل الشحن." },
-  { icon: "🔗", title: "إدارة سلسلة التوريد", desc: "إدارة متكاملة من المصدر حتى بابك — من الألف إلى الياء." },
-  { icon: "☀️", title: "منظومات الطاقة الشمسية", desc: "توريد وتركيب حلول الطاقة للمصانع والمنازل بكفاءة عالية." },
-  { icon: "🏨", title: "تجهيز الفنادق والمنازل", desc: "أثاث، ديكور، سيراميك ومستلزمات فاخرة بمعايير دولية." },
-  { icon: "📊", title: "دراسات جدوى متكاملة", desc: "تحليل عميق لخطوط الإنتاج وفرص الاستثمار قبل أي خطوة." },
+  { icon: <Ship className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "الاستيراد من الصين للعالم", desc: "جميع المنتجات بجودة مضمونة وأسعار مباشرة من المصنع." },
+  { icon: <Globe2 className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "التصدير إلى الأسواق العالمية", desc: "نوصل منتجاتك من الصين إلى أي وجهة حول العالم." },
+  { icon: <Plane className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "الشحن البحري والجوي", desc: "حاويات كاملة وجزئية (FCL / LCL) وشحن جوي سريع." },
+  { icon: <FileCheck2 className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "التخليص الجمركي", desc: "استخراج كافة الشهادات والوثائق وإنهاء الإجراءات الجمركية." },
+  { icon: <ShieldCheck className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "فحص الجودة من الموردين", desc: "فريقنا في الصين يتأكد من جودة بضاعتك قبل الشحن." },
+  { icon: <Network className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "إدارة سلسلة التوريد", desc: "إدارة متكاملة من المصدر حتى بابك — من الألف إلى الياء." },
+  { icon: <SunMedium className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "منظومات الطاقة الشمسية", desc: "توريد وتركيب حلول الطاقة للمصانع والمنازل بكفاءة عالية." },
+  { icon: <Building2 className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "تجهيز الفنادق والمنازل", desc: "أثاث، ديكور، سيراميك ومستلزمات فاخرة بمعايير دولية." },
+  { icon: <BarChart3 className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "دراسات جدوى متكاملة", desc: "تحليل عميق لخطوط الإنتاج وفرص الاستثمار قبل أي خطوة." },
 ];
 
 const branches = [
@@ -293,7 +304,7 @@ function Index() {
               <article key={s.title} className="group relative p-8 rounded-2xl bg-card border border-white/5 hover:border-gold/40 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(600px circle at 0% 0%, oklch(0.80 0.13 85 / 0.08), transparent 40%)" }} />
                 <div className="relative">
-                  <span className="text-4xl block mb-5">{s.icon}</span>
+                  <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl border border-gold/20 bg-gold/10 text-gold transition duration-300 group-hover:border-gold/40 group-hover:bg-gold/15">{s.icon}</span>
                   <h3 className="text-xl font-bold mb-2">{s.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
                   <div className="mt-6 text-xs font-bold text-gold tracking-widest">0{i + 1}.</div>
