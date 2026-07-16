@@ -34,7 +34,7 @@ const services = [
 
 const branches = [
   { city: "الصين", role: "مركز الإمداد الرئيسي", phone: "+86 13600495904", tag: "واتساب" },
-  { city: "السعودية", role: "خط مباشر", phone: "+966537971388", tag: "واتساب" },
+  { city: "السعودية", role: "خط مباشر", phone: "00966545557309", tag: "واتساب" },
   { city: "السودان", role: "فرع رئيسي", phone: "+249 926122303", tag: "مكتب" },
   { city: "سلطنة عُمان", role: "مكتب إقليمي", phone: "+968 71130149", tag: "مكتب" },
 ];
@@ -517,11 +517,11 @@ function Index() {
             <h4 className="font-bold mb-4">للتواصل المباشر</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">الصين — واتساب</span><a dir="ltr" href="https://wa.me/8613600495904" className="text-gold font-mono">+86 13600495904</a></li>
-              <li className="flex justify-between gap-3"><span className="text-muted-foreground">السعودية — واتساب</span><a dir="ltr" href="https://wa.me/966537971388" className="text-gold font-mono">+966 537971388</a></li>
+              <li className="flex justify-between gap-3"><span className="text-muted-foreground">السعودية — واتساب</span><a dir="ltr" href="https://wa.me/966545557309" className="text-gold font-mono">00966545557309</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">السودان</span><a dir="ltr" href="tel:+249926122303" className="text-gold font-mono">+249 926122303</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">عُمان</span><a dir="ltr" href="tel:+96871130149" className="text-gold font-mono">+968 71130149</a></li>
               <li className="flex justify-between gap-3"><span className="text-muted-foreground">البريد</span><a dir="ltr" href="mailto:info@ibdaaworld.com" className="text-gold font-mono text-xs">info@ibdaaworld.com</a></li>
-              <li className="flex justify-between gap-3"><span className="text-muted-foreground">QQ Mail</span><a dir="ltr" href="mailto:ibdaaworld@gmail.com" className="text-gold font-mono text-xs">ibdaaworld@gmail.com</a></li>
+              <li className="flex justify-between gap-3"><span className="text-muted-foreground">QQ Mail</span><a dir="ltr" href="mailto:2261579826@qq.com" className="text-gold font-mono text-xs">2261579826@qq.com</a></li>
             </ul>
           </div>
           <div>
