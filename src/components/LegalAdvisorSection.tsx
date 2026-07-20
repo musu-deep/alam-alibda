@@ -2,29 +2,22 @@ import { useEffect } from "react";
 
 export function LegalAdvisorSection() {
   useEffect(() => {
-    const moveCardAfterServices = () => {
-      const servicesSection = document.getElementById("services");
-      const servicesContainer = servicesSection?.firstElementChild;
+    const moveCardBeforeMap = () => {
       const legalAdvisorCard = document.getElementById("legal-advisor");
+      const mapSection = document.getElementById("map");
 
-      if (!servicesContainer || !legalAdvisorCard) return false;
+      if (!legalAdvisorCard || !mapSection) return false;
 
-      const servicesGrid = Array.from(servicesContainer.children).find((element) =>
-        element.classList.contains("grid"),
-      );
-
-      if (!servicesGrid) return false;
-
-      legalAdvisorCard.classList.remove("mb-14");
-      legalAdvisorCard.classList.add("mt-14");
-      servicesGrid.insertAdjacentElement("afterend", legalAdvisorCard);
+      legalAdvisorCard.classList.remove("mt-14", "mb-14");
+      legalAdvisorCard.classList.add("mx-auto", "my-20", "max-w-7xl");
+      mapSection.insertAdjacentElement("beforebegin", legalAdvisorCard);
       return true;
     };
 
-    if (moveCardAfterServices()) return;
+    if (moveCardBeforeMap()) return;
 
     const observer = new MutationObserver(() => {
-      if (moveCardAfterServices()) observer.disconnect();
+      if (moveCardBeforeMap()) observer.disconnect();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
