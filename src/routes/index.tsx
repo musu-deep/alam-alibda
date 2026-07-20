@@ -31,6 +31,9 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const LAW_FIRM_URL = "https://altamimilawfirm.com.sa/servicess/";
+const LAW_FIRM_QR = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&data=${encodeURIComponent(LAW_FIRM_URL)}`;
+
 const services = [
   { icon: <Ship className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "الاستيراد من الصين للعالم", desc: "جميع المنتجات بجودة مضمونة وأسعار مباشرة من المصنع." },
   { icon: <Globe2 className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" />, title: "التصدير إلى الأسواق العالمية", desc: "نوصل منتجاتك من الصين إلى أي وجهة حول العالم." },
@@ -79,7 +82,6 @@ const globeRoutes = [
   { startLat: 23.1291, startLng: 113.2644, endLat: 6.5244, endLng: 3.3792 },
 ];
 
-
 function HeroGlobe() {
   const globeRef = useRef<HTMLDivElement | null>(null);
 
@@ -95,57 +97,53 @@ function HeroGlobe() {
 
       const Globe = GlobeModule.default;
 
- globeInstance = new Globe(globeRef.current)
-  .width(620)
-  .height(620)
-  .backgroundColor("rgba(0,0,0,0)")
-  .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
-  .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
-
-  .pointsData(globeCities)
-  .pointLat((d: any) => d.lat)
-  .pointLng((d: any) => d.lng)
-  .pointAltitude(0.035)
-  .pointRadius(0.35)
-  .pointColor(() => "#e7b74a")
-  .pointLabel((d: any) => `
-    <div style="direction:rtl;text-align:right;min-width:190px;background:rgba(4,10,24,.94);border:1px solid rgba(231,183,74,.55);border-radius:14px;padding:12px 14px;color:white;font-family:Cairo,Tajawal,sans-serif;box-shadow:0 20px 50px rgba(0,0,0,.35);">
-      <div style="font-size:15px;font-weight:800;color:#e7b74a;margin-bottom:4px;">${d.name}</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:8px;">${d.country}</div>
-      <div style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.9);">${d.note || ""}</div>
-    </div>
-  `)
-
-  .labelsData(globeCities)
-  .labelLat((d: any) => d.lat)
-  .labelLng((d: any) => d.lng)
-  .labelText((d: any) => d.label)
-  .labelSize(() => 1.2)
-  .labelDotRadius(() => 0.3)
-  .labelColor(() => "#e7b74a")
-
-  .arcsData(globeRoutes)
-  .arcStartLat((d: any) => d.startLat)
-  .arcStartLng((d: any) => d.startLng)
-  .arcEndLat((d: any) => d.endLat)
-  .arcEndLng((d: any) => d.endLng)
-  .arcColor(() => ["rgba(231,183,74,0.15)", "rgba(231,183,74,0.95)"])
-  .arcAltitude(0.22)
-  .arcStroke(0.85)
-  .arcDashLength(0.5)
-  .arcDashGap(1.2)
-  .arcDashAnimateTime(4500);
+      globeInstance = new Globe(globeRef.current)
+        .width(620)
+        .height(620)
+        .backgroundColor("rgba(0,0,0,0)")
+        .globeImageUrl("//unpkg.com/three-globe/example/img/earth-night.jpg")
+        .bumpImageUrl("//unpkg.com/three-globe/example/img/earth-topology.png")
+        .pointsData(globeCities)
+        .pointLat((d: any) => d.lat)
+        .pointLng((d: any) => d.lng)
+        .pointAltitude(0.035)
+        .pointRadius(0.35)
+        .pointColor(() => "#e7b74a")
+        .pointLabel((d: any) => `
+          <div style="direction:rtl;text-align:right;min-width:190px;background:rgba(4,10,24,.94);border:1px solid rgba(231,183,74,.55);border-radius:14px;padding:12px 14px;color:white;font-family:Cairo,Tajawal,sans-serif;box-shadow:0 20px 50px rgba(0,0,0,.35);">
+            <div style="font-size:15px;font-weight:800;color:#e7b74a;margin-bottom:4px;">${d.name}</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:8px;">${d.country}</div>
+            <div style="font-size:12px;line-height:1.7;color:rgba(255,255,255,.9);">${d.note || ""}</div>
+          </div>
+        `)
+        .labelsData(globeCities)
+        .labelLat((d: any) => d.lat)
+        .labelLng((d: any) => d.lng)
+        .labelText((d: any) => d.label)
+        .labelSize(() => 1.2)
+        .labelDotRadius(() => 0.3)
+        .labelColor(() => "#e7b74a")
+        .arcsData(globeRoutes)
+        .arcStartLat((d: any) => d.startLat)
+        .arcStartLng((d: any) => d.startLng)
+        .arcEndLat((d: any) => d.endLat)
+        .arcEndLng((d: any) => d.endLng)
+        .arcColor(() => ["rgba(231,183,74,0.15)", "rgba(231,183,74,0.95)"])
+        .arcAltitude(0.22)
+        .arcStroke(0.85)
+        .arcDashLength(0.5)
+        .arcDashGap(1.2)
+        .arcDashAnimateTime(4500);
 
       const controls = globeInstance.controls();
-
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.25;
-controls.enableZoom = false;
-controls.enablePan = false;
-controls.enableRotate = true;
-controls.rotateSpeed = 0.55;
-controls.enableDamping = true;
-controls.dampingFactor = 0.08;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.25;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.enableRotate = true;
+      controls.rotateSpeed = 0.55;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
 
       globeInstance.pointOfView({ lat: 24, lng: 72, altitude: 1.9 }, 0);
     }
@@ -185,54 +183,99 @@ controls.dampingFactor = 0.08;
     </div>
   );
 }
+
+function LegalAdvisorCard() {
+  return (
+    <section id="legal-advisor" className="relative mb-14 overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.055] p-3 shadow-[0_35px_100px_rgba(0,0,0,.38)] backdrop-blur-2xl sm:p-5">
+      <div className="pointer-events-none absolute inset-x-24 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
+      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
+
+      <div className="relative grid overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#061426]/90 lg:grid-cols-[1fr_330px]">
+        <div className="relative flex min-h-[390px] flex-col justify-center overflow-hidden px-7 py-10 sm:px-12 lg:px-14">
+          <Building2 className="absolute -left-8 bottom-0 h-64 w-64 text-gold/[0.055]" strokeWidth={1} aria-hidden="true" />
+
+          <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-xs font-bold text-gold backdrop-blur-xl">
+            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+            الثقة القانونية والمؤسسية
+          </div>
+
+          <p className="mb-4 text-sm font-semibold tracking-wide text-gold">عالم الإبداع | Ibdaa World</p>
+          <h3 className="max-w-3xl text-3xl font-black leading-[1.45] text-white sm:text-4xl lg:text-[2.55rem]">
+            المستشار القانوني لشركة عالم الإبداع
+            <span className="block gradient-gold-text">في المملكة العربية السعودية</span>
+          </h3>
+
+          <p className="mt-5 max-w-3xl text-base leading-8 text-white/70">
+            تفخر شركة عالم الإبداع باعتماد مكتب ناصر التميمي محامون ومستشارون مستشاراً وممثلاً قانونياً لها في المملكة، بما يعزز سلامة أعمالها وشراكاتها وفق أعلى المعايير المهنية.
+          </p>
+
+          <div className="my-7 h-px w-full max-w-3xl bg-gradient-to-l from-transparent via-gold/55 to-transparent" />
+
+          <div className="w-fit rounded-2xl border border-gold/45 bg-black/20 px-6 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,.08)]">
+            <p className="text-xl font-black text-white sm:text-2xl">مكتب ناصر التميمي محامون ومستشارون</p>
+          </div>
+          <p className="mt-4 text-lg font-bold text-gold">الممثل القانوني للشركة</p>
+          <p className="mt-3 max-w-2xl leading-8 text-white/65">خدمات قانونية واستشارية موثوقة باحترافية عالية.</p>
+
+          <a
+            href={LAW_FIRM_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-7 inline-flex w-fit items-center gap-2 rounded-xl border border-gold/30 bg-gold/10 px-5 py-3 text-sm font-bold text-gold transition hover:-translate-y-0.5 hover:border-gold/60 hover:bg-gold/15"
+          >
+            زيارة موقع المكتب ↗
+          </a>
+        </div>
+
+        <a
+          href={LAW_FIRM_URL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="فتح موقع مكتب ناصر التميمي محامون ومستشارون"
+          className="relative flex flex-col items-center justify-center border-t border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.025] p-8 transition hover:bg-white/[0.075] lg:border-r lg:border-t-0"
+        >
+          <div className="rounded-[1.4rem] bg-white p-4 shadow-[0_20px_70px_rgba(0,0,0,.35)]">
+            <img src={LAW_FIRM_QR} alt="رمز QR لموقع مكتب ناصر التميمي" className="h-52 w-52 sm:h-60 sm:w-60" />
+          </div>
+          <p className="mt-6 text-center text-base font-bold leading-7 text-white">للاطلاع على المكتب والخدمات<br />امسح رمز QR</p>
+          <span dir="ltr" className="mt-5 max-w-full break-all text-center text-xs text-gold/90">altamimilawfirm.com.sa/servicess/</span>
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({ name: "", phone: "", service: "", details: "" });
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
- {/* NAV */}
-<header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#061426]/85 border-b border-[#D4A84F]/15">
-  <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      {/* NAV */}
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#061426]/85 border-b border-[#D4A84F]/15">
+        <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <a href="#home" className="flex items-center gap-4">
+            <img src={logo} alt="عالم الإبداع" className="header-logo" />
+            <div className="hidden md:flex flex-col leading-tight">
+              <span className="font-black text-lg text-white">الاستيراد والتصدير | التجارة الدولية</span>
+              <span className="text-[10px] tracking-[3px] text-[#D4A84F] uppercase">CREATIVE WORLD</span>
+            </div>
+          </a>
 
-    <a href="#home" className="flex items-center gap-4">
-      <img
-        src={logo}
-        alt="عالم الإبداع"
-        className="header-logo"
-      />
+          <ul className="hidden md:flex items-center gap-8 text-sm text-white/80">
+            <li><a href="#services" className="hover:text-[#D4A84F] transition">خدماتنا</a></li>
+            <li><a href="#map" className="hover:text-[#D4A84F] transition">فروعنا</a></li>
+            <li><a href="#about" className="hover:text-[#D4A84F] transition">من نحن</a></li>
+            <li><a href="#contact" className="hover:text-[#D4A84F] transition">تواصل</a></li>
+          </ul>
 
-      <div className="hidden md:flex flex-col leading-tight">
-        <span className="font-black text-lg text-white">
-          الاستيراد والتصدير | التجارة الدولية
-        </span>
-
-        <span className="text-[10px] tracking-[3px] text-[#D4A84F] uppercase">
-          CREATIVE WORLD
-        </span>
-      </div>
-    </a>
-
-    <ul className="hidden md:flex items-center gap-8 text-sm text-white/80">
-      <li><a href="#services" className="hover:text-[#D4A84F] transition">خدماتنا</a></li>
-      <li><a href="#map" className="hover:text-[#D4A84F] transition">فروعنا</a></li>
-      <li><a href="#about" className="hover:text-[#D4A84F] transition">من نحن</a></li>
-      <li><a href="#contact" className="hover:text-[#D4A84F] transition">تواصل</a></li>
-    </ul>
-
-    <a
-      href="#quote"
-      className="px-5 py-2 rounded-lg font-bold text-black bg-[#D4A84F] hover:scale-105 transition"
-    >
-      طلب عرض سعر
-    </a>
-
-  </nav>
-</header>
+          <a href="#quote" className="px-5 py-2 rounded-lg font-bold text-black bg-[#D4A84F] hover:scale-105 transition">طلب عرض سعر</a>
+        </nav>
+      </header>
 
       {/* HERO */}
       <section id="home" className="relative min-h-screen flex items-center pt-16">
-        
         <div className="absolute inset-0 overflow-hidden">
           <img src={heroImg} alt="عالم الإبداع - الاستيراد من الصين إلى الخليج" width={1920} height={1080} className="w-full h-full object-cover animate-ken-burns" />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
@@ -240,9 +283,6 @@ function Index() {
         </div>
         <HeroGlobe />
 
-
-
-        {/* HERO CONTENT */}
         <div className="relative z-30 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gold mb-6">
@@ -260,12 +300,8 @@ function Index() {
               حلول لوجستية متكاملة من الصين للعالم — للاستيراد والتصدير، الشحن البحري والجوي (كامل وجزئي)، وتجهيز المشاريع الكبرى بمعايير دولية.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="#quote" className="inline-flex items-center gap-2 px-7 py-4 rounded-md text-primary-foreground font-bold shadow-gold transition hover:translate-y-[-2px]" style={{ background: "var(--gradient-gold)" }}>
-                ابدأ مشروعك الآن ←
-              </a>
-              <a href="#map" className="inline-flex items-center gap-2 px-7 py-4 rounded-md border border-white/20 bg-white/5 backdrop-blur-sm font-bold text-white hover:bg-white/10 transition">
-                استكشف خريطة أعمالنا
-              </a>
+              <a href="#quote" className="inline-flex items-center gap-2 px-7 py-4 rounded-md text-primary-foreground font-bold shadow-gold transition hover:translate-y-[-2px]" style={{ background: "var(--gradient-gold)" }}>ابدأ مشروعك الآن ←</a>
+              <a href="#map" className="inline-flex items-center gap-2 px-7 py-4 rounded-md border border-white/20 bg-white/5 backdrop-blur-sm font-bold text-white hover:bg-white/10 transition">استكشف خريطة أعمالنا</a>
             </div>
 
             <dl className="mt-14 grid grid-cols-3 gap-6 max-w-lg">
@@ -283,7 +319,6 @@ function Index() {
           </div>
         </div>
 
-        {/* scroll cue */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground text-xs flex flex-col items-center gap-2 animate-float-slow">
           <span>اكتشف المزيد</span>
           <span className="w-px h-10 bg-gradient-to-b from-gold to-transparent" />
@@ -298,6 +333,8 @@ function Index() {
             <h2 className="text-4xl md:text-5xl font-black">حلول متكاملة <span className="gradient-gold-text">من الألف إلى الياء</span></h2>
             <p className="mt-4 text-muted-foreground text-lg">وفّر وقتك وجهدك — نحن نتولى كل شيء، بأسعار تفوق الخيال.</p>
           </div>
+
+          <LegalAdvisorCard />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
@@ -345,7 +382,6 @@ function Index() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Stylized map */}
             <div className="relative aspect-[4/3] rounded-2xl bg-card border border-white/5 p-8 overflow-hidden">
               <svg viewBox="0 0 400 300" className="w-full h-full">
                 <defs>
@@ -355,23 +391,14 @@ function Index() {
                     <stop offset="100%" stopColor="oklch(0.80 0.13 85)" stopOpacity="0" />
                   </linearGradient>
                 </defs>
-                {/* dots = continents abstract */}
                 {Array.from({ length: 120 }).map((_, i) => {
                   const x = (i % 20) * 22 + 10;
                   const y = Math.floor(i / 20) * 50 + 20;
                   return <circle key={i} cx={x} cy={y} r="1.2" fill="oklch(1 0 0 / 0.15)" />;
                 })}
-                {/* arcs */}
-                <path d="M 320 100 Q 220 20 120 130" stroke="url(#line)" strokeWidth="2" fill="none" strokeDasharray="4 4">
-                  <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="3s" repeatCount="indefinite" />
-                </path>
-                <path d="M 320 100 Q 260 60 200 180" stroke="url(#line)" strokeWidth="2" fill="none" strokeDasharray="4 4">
-                  <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="4s" repeatCount="indefinite" />
-                </path>
-                <path d="M 320 100 Q 290 140 250 220" stroke="url(#line)" strokeWidth="2" fill="none" strokeDasharray="4 4">
-                  <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="5s" repeatCount="indefinite" />
-                </path>
-                {/* nodes */}
+                <path d="M 320 100 Q 220 20 120 130" stroke="url(#line)" strokeWidth="2" fill="none" strokeDasharray="4 4"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="3s" repeatCount="indefinite" /></path>
+                <path d="M 320 100 Q 260 60 200 180" stroke="url(#line)" strokeWidth="2" fill="none" strokeDasharray="4 4"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="4s" repeatCount="indefinite" /></path>
+                <path d="M 320 100 Q 290 140 250 220" stroke="url(#line)" strokeWidth="2" fill="none" strokeDasharray="4 4"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="5s" repeatCount="indefinite" /></path>
                 {[
                   { x: 320, y: 100, l: "الصين" },
                   { x: 120, y: 130, l: "شمال أفريقيا" },
@@ -379,9 +406,7 @@ function Index() {
                   { x: 250, y: 220, l: "السعودية" },
                 ].map((n) => (
                   <g key={n.l}>
-                    <circle cx={n.x} cy={n.y} r="10" fill="oklch(0.80 0.13 85 / 0.15)">
-                      <animate attributeName="r" values="10;16;10" dur="2.5s" repeatCount="indefinite" />
-                    </circle>
+                    <circle cx={n.x} cy={n.y} r="10" fill="oklch(0.80 0.13 85 / 0.15)"><animate attributeName="r" values="10;16;10" dur="2.5s" repeatCount="indefinite" /></circle>
                     <circle cx={n.x} cy={n.y} r="4" fill="oklch(0.85 0.14 88)" />
                     <text x={n.x} y={n.y - 14} textAnchor="middle" fill="white" fontSize="10" fontWeight="700">{n.l}</text>
                   </g>
@@ -420,9 +445,7 @@ function Index() {
           <div>
             <p className="text-gold text-sm font-bold mb-3">من نحن</p>
             <h2 className="text-4xl md:text-5xl font-black leading-tight">بوابتك <span className="gradient-gold-text">الموثوقة</span> في الصين.</h2>
-            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-              في <strong className="text-white">عالم الإبداع</strong> نختصر لك رحلة الاستيراد بأكملها — من اختيار المصنع، إلى فحص الجودة، إلى الشحن الدولي والتخليص الجمركي. لا داعي للسفر، ولا للقلق. نحن هناك من أجلك.
-            </p>
+            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">في <strong className="text-white">عالم الإبداع</strong> نختصر لك رحلة الاستيراد بأكملها — من اختيار المصنع، إلى فحص الجودة، إلى الشحن الدولي والتخليص الجمركي. لا داعي للسفر، ولا للقلق. نحن هناك من أجلك.</p>
             <ul className="mt-8 space-y-3">
               {["شبكة موردين موثوقين منذ عام 2005", "فريق فحص جودة ميداني في الصين", "أسعار مصنع مباشرة بدون وسطاء", "خدمة شخصية بلغتك من البداية للنهاية"].map((p) => (
                 <li key={p} className="flex items-start gap-3">
@@ -444,7 +467,6 @@ function Index() {
           </div>
 
           <div className="bg-card border border-white/5 rounded-2xl p-8 md:p-10">
-            {/* progress */}
             <div className="flex items-center gap-3 mb-8">
               {[0, 1, 2].map((i) => (
                 <div key={i} className={`h-1.5 flex-1 rounded-full transition ${i <= step ? "bg-gold" : "bg-white/10"}`} />
@@ -487,20 +509,13 @@ function Index() {
               {step < 2 ? (
                 <button type="button" onClick={() => setStep((s) => s + 1)} className="px-7 py-3 rounded-lg font-bold text-primary-foreground shadow-gold" style={{ background: "var(--gradient-gold)" }}>التالي ←</button>
               ) : (
-                <a
-                  href={`https://wa.me/8618000872025?text=${encodeURIComponent(`السلام عليكم، أنا ${form.name} (${form.phone}). أرغب في: ${form.service}.\nالتفاصيل: ${form.details}`)}`}
-                  target="_blank" rel="noreferrer"
-                  className="px-7 py-3 rounded-lg font-bold text-primary-foreground shadow-gold" style={{ background: "var(--gradient-gold)" }}
-                >
-                  إرسال عبر واتساب
-                </a>
+                <a href={`https://wa.me/8618000872025?text=${encodeURIComponent(`السلام عليكم، أنا ${form.name} (${form.phone}). أرغب في: ${form.service}.\nالتفاصيل: ${form.details}`)}`} target="_blank" rel="noreferrer" className="px-7 py-3 rounded-lg font-bold text-primary-foreground shadow-gold" style={{ background: "var(--gradient-gold)" }}>إرسال عبر واتساب</a>
               )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CONTACT / FOOTER */}
       {/* VALUES STRIP */}
       <section className="border-y border-white/5 bg-card/40">
         <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -520,9 +535,7 @@ function Index() {
               <span className="w-10 h-10 rounded-md grid place-items-center font-black text-primary-foreground" style={{ background: "var(--gradient-gold)" }}>ع</span>
               <span className="font-extrabold text-lg">عالم الإبداع</span>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              للاستيراد والتصدير، الطاقة المتجددة، وتجهيز المشاريع الكبرى. نختصر المسافات لنضع الصين والعالم بين يديك.
-            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">للاستيراد والتصدير، الطاقة المتجددة، وتجهيز المشاريع الكبرى. نختصر المسافات لنضع الصين والعالم بين يديك.</p>
           </div>
           <div>
             <h4 className="font-bold mb-4">للتواصل المباشر</h4>
@@ -544,9 +557,7 @@ function Index() {
             </div>
           </div>
         </div>
-        <div className="border-t border-white/5 py-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} عالم الإبداع — جميع الحقوق محفوظة.
-        </div>
+        <div className="border-t border-white/5 py-6 text-center text-xs text-muted-foreground">© {new Date().getFullYear()} عالم الإبداع — جميع الحقوق محفوظة.</div>
       </footer>
     </div>
   );
